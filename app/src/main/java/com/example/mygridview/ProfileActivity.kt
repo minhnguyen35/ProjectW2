@@ -22,12 +22,13 @@ class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile)
-        binding.takePictureBtn.setOnClickListener {
+        binding.activity = this
+        /*binding.takePictureBtn.setOnClickListener {
             requestPermission()
         }
         binding.nextBtn.setOnClickListener {
             nextActivity()
-        }
+        }*/
 
         requestPermissionLauncher =
             registerForActivityResult(
@@ -41,13 +42,13 @@ class ProfileActivity : AppCompatActivity() {
             }
     }
 
-    private fun nextActivity() {
+     fun nextActivity() {
         startActivity(Intent(this, MainActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         })
     }
 
-    private fun requestPermission() {
+     fun requestCameraPermission() {
         when (PackageManager.PERMISSION_GRANTED) {
             ContextCompat.checkSelfPermission(
                 this, android.Manifest.permission.CAMERA
