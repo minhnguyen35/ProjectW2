@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -23,7 +24,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun checkUser() {
         val preferences = getSharedPreferences("user", Context.MODE_PRIVATE)
-        val username = preferences.getString(KEY, "null")
+        val username:String? = preferences.getString(KEY, "null")
+//        Log.d("AAA",username.toString())
         if(username == "null"){
             val i = Intent(this, SignUp::class.java).apply {
                 addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -38,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         val books = Books.create()
         val bookAdapter = LibraryAdapter()
         bookAdapter.initList(books)
-        //Toast.makeText(this,"size is ${books.size}",Toast.LENGTH_SHORT).show()
+
         val recyclerView = findViewById<RecyclerView>(R.id.recylerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = bookAdapter

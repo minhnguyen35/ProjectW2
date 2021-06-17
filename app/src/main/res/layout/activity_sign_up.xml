@@ -38,6 +38,7 @@
             android:inputType="text"
             android:hint="username"
             android:layout_margin="10dp"
+            android:id="@+id/username"
             />
         <EditText
             android:layout_width="match_parent"
@@ -47,6 +48,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="10dp"
+            android:id="@+id/password"
             />
         <Button
             android:layout_width="wrap_content"
